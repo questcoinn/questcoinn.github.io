@@ -1,0 +1,52 @@
+{
+  "navList": [
+    {
+      "name": "database",
+      "text": "Database",
+      "children": [
+        {
+          "name": "concepts",
+          "text": "데이터베이스의 개념",
+          "kind": "Docs",
+          "children": []
+        },
+        {
+          "name": "modeling",
+          "text": "데이터 모델링 및 설계",
+          "kind": "Docs",
+          "children": []
+        },
+        {
+          "name": "rdb",
+          "text": "관계 데이터베이스 모델과 언어",
+          "kind": "Docs",
+          "children": []
+        },
+        {
+          "name": "concepts.md",
+          "text": "데이터베이스의 개념",
+          "kind": "Docs",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "project",
+      "text": "Project",
+      "children": [
+        {
+          "name": "minesweeper",
+          "text": "Mine Sweeper",
+          "kind": "App",
+          "children": []
+        },
+        {
+          "name": "randomwordgen",
+          "text": "Random Word Generator",
+          "kind": "App",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

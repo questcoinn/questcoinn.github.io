@@ -1,0 +1,35 @@
+table, tr, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  font-weight: bold;
+}
+
+td {
+  width: 50px;
+  height: 50px;
+}
+
+td.closed {
+  background: darkgray;
+}
+
+td.dragging {
+  background: lightgray;
+}
+
+td.flagged {
+  background: red;
+}
+
+td.opened {
+  background: white;
+}
+
+td.mineRevealed {
+  background: white;
+}
+
+td.mineClicked {
+  background: red;
+}

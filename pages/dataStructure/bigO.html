@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <link href="https://fonts.googleapis.com/css?family=Oxygen|Roboto+Mono" rel="stylesheet">
+  <style>
+    * { font-family: 'Oxygen', sans-serif; }
+    pre {
+      font-family: 'Roboto Mono', monospace;
+      border-left: 5px solid #34ff34;
+      background-color: #f9f9f9;
+      padding: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <pre>
+  there exist some c & x0 s/t
+  for all x >= x0,
+  f(x) <= c*g(x)</pre>
+
+  <h1>O(n)</h1>
+  <pre>
+  for(let i = 0; i < <input type="text" id="nN" style="width: 24px">; i++) {
+    function times(<input type="text" id="nT" style="width: 24px" value="1">) { /* ... */ }
+  }</pre>
+  <input type="button" value="run" id="nRun">
+  <p id="n"></p>
+  <script>
+    let n = document.getElementById("n");
+    let nN = document.getElementById("nN");
+    let nT = document.getElementById("nT");
+    document.getElementById("nRun").addEventListener("click", () => {
+      n.innerHTML = nN.value * nT.value + " times";
+    });
+  </script>
+
+  <h1>O(n^2)</h1>
+  <pre>
+  for(let i = 0; i < <input type="text" id="n2N1" style="width: 24px">; i++) {
+    for(let j = 0; j < <input type="text" id="n2N2" style="width: 24px">; j++) {
+      function times(<input type="text" id="n2T" style="width: 24px" value="1">) { /* ... */ }
+    }
+  }</pre>
+  <input type="button" value="run" id="n2Run">
+  <p id="n2"></p>
+  <script>
+    let n2 = document.getElementById("n2");
+    let n2N1 = document.getElementById("n2N1");
+    let n2N2 = document.getElementById("n2N2");
+    let n2T = document.getElementById("n2T");
+    document.getElementById("n2Run").addEventListener("click", () => {
+      n2.innerHTML = n2N1.value* n2N2.value * n2T.value + " times";
+    });
+  </script>
+
+  <h1>O(log(n))</h1>
+  <pre>
+  for(let i = 1; i < <input type="text" id="lnN" style="width: 24px">; i *= 2) {
+    function times(<input type="text" id="lnT" style="width: 24px" value="1">) { /* ... */ }
+  }</pre>
+  <input type="button" value="run" id="lnRun">
+  <p id="ln"></p>
+  <script>
+    let log2 = (x) => Math.log(x)/Math.log(2);
+    let ln = document.getElementById("ln");
+    let lnN = document.getElementById("lnN");
+    let lnT = document.getElementById("lnT");
+    document.getElementById("lnRun").addEventListener("click", () => {
+      if(lnN.value && lnN.value > 0) ln.innerHTML = Math.floor(log2(lnN.value)) * lnT.value + " times";
+      else ln.innerHTML = "0 times";
+    });
+  </script>
+</body>
+</html>

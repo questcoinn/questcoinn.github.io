@@ -1,0 +1,140 @@
+#article-md * {
+  margin-top: 0;
+}
+
+#article-md > * {
+  margin-bottom: 1rem;
+}
+
+#article-md h1,
+#article-md h2,
+#article-md h3,
+#article-md h4,
+#article-md h5,
+#article-md h6 {
+  margin-top: 1.5rem;
+}
+
+#article-md h1,
+#article-md h2 {
+  padding-bottom: .3em;
+  border-bottom: 1px solid #eaecef;
+}
+
+#article-md h5,
+#article-md h6 {
+  color: #6a737d;
+  font-size: initial;
+}
+
+#article-md ol,
+#article-md ul {
+  padding-left: 2rem;
+  margin-bottom: .5rem;
+}
+
+#article-md ul li {
+  list-style: initial;
+}
+
+#article-md li > p {
+  margin-bottom: 0;
+}
+
+#article-md ol > .list-second {
+  list-style-type: lower-roman;
+}
+
+#article-md ol > .list-third {
+  list-style-type: lower-alpha;
+}
+
+#article-md ul > .list-second {
+  list-style-type: circle;
+}
+
+#article-md ul > .list-third {
+  list-style-type: square;
+}
+
+#article-md .contains-task-list {
+  padding-left: 0;
+}
+
+#article-md .task-list-item {
+  list-style: none;
+}
+
+#article-md a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+#article-md blockquote {
+  margin-left: 0;
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: .25em solid #dfe2e5;
+}
+
+#article-md pre {
+  padding: 1rem;
+  overflow: auto;
+  font-size: .85rem;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+}
+
+#article-md code {
+  font-family: "Roboto Mono", monospace;
+  font-size: .85rem;
+  background-color: #f6f8fa;
+}
+
+#article-md pre code {
+  font-size: inherit;
+}
+
+#article-md table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+#article-md th {
+  font-weight: 600;
+}
+
+#article-md tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+#article-md tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+#article-md th,
+#article-md td {
+  padding: .375rem .75rem;
+  border: 1px solid #dfe2e5;
+}
+
+#article-md hr {
+  height: .25rem;
+  padding: 0;
+  margin: 1.5rem 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+#article-md summary {
+  cursor: pointer;
+}
+
+#article-md summary:focus {
+  outline: none;
+}

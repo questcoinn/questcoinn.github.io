@@ -1,0 +1,33 @@
+.lang-javascript .hljs-keyword,
+.lang-javascript .xml .hljs-tag {
+  color: #d73a49;
+}
+
+.lang-javascript .hljs-title {
+  color: #6f42c1;
+}
+
+.lang-javascript .hljs-regexp {
+  color: #22863a;
+}
+
+.lang-javascript .hljs-number,
+.lang-javascript .hljs-literal {
+  color: #005cc5;
+}
+
+.lang-javascript .hljs-string {
+  color: #032f62;
+}
+
+.lang-javascript .hljs-comment {
+  color: #6a737d;
+}
+
+.lang-javascript .hljs-built_in {
+  color: #6f42c1;
+}
+
+.lang-javascript .xml .hljs-name {
+  color: initial;
+}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; }
+    #stack {
+      padding: 5px;
+      border: 1px solid black;
+      display: block;
+      width: auto;
+    }
+    #index, #value {
+      padding: 5px;
+      display: block;
+      width: auto;
+    }
+    #index span, #value span {
+      margin-right: 5px;
+      overflow: hidden;
+      display: inline-block;
+      width: 20px;
+    }
+    #index span:first-of-type, #value span:first-of-type { width: auto; }
+  </style>
+</head>
+<body>
+  <div id="stack">
+    <div id="index">
+      <span>index: </span>
+    </div>
+    <div id="value">
+      <span>value: </span>
+    </div>
+  </div>
+  <input type="text" style="width: 24px" id="pushVal">
+  <input type="button" value="push" id="_push">
+  <input type="button" value="pop" id="_pop">
+  <br>
+  <input type="text" style="width: 24px" id="indexVal" value="10">
+  <input type="button" value="index" id="_index">
+  <span id="temp"> <--------- PUSH!!</span>
+  <p id="notice"></p>
+  <script>
+    const _push  = document.querySelector("#_push");
+    const _pop   = document.querySelector("#_pop");
+    const _in    = document.querySelector("#_index");
+    const note   = document.querySelector("#notice");
+    const _index = document.querySelector("#index");
+    const _value = document.querySelector("#value");
+
+    const createNode = (el, val) => {
+      const node = document.createElement(el);
+      const textNode = document.createTextNode(val);
+      node.appendChild(textNode);
+      return node;
+    }
+
+    _push.addEventListener("click", () => {
+      if(!document.querySelector("#pushVal").value) note.innerHTML = "Put the value!!";
+      else if(_index.children.length > _value.children.length) {
+        _value.appendChild(createNode("SPAN", document.querySelector("#pushVal").value));
+        note.innerHTML = "";
+      } else note.innerHTML = "Index is full!!";
+    });
+    _pop.addEventListener("click", () => {
+      if(_value.children.length === 1) note.innerHTML = "There is no values!!";
+      else {
+        _value.removeChild(_value.children[_value.children.length-1]);
+        note.innerHTML = "";
+      }
+    });
+    _in.addEventListener("click", () => {
+      const targetIndex = parseInt(document.querySelector("#indexVal").value);
+      let indexLen = _index.children.length - 1;
+      let valueLen = _value.children.length - 1;
+
+      if(targetIndex > indexLen) {
+        // PUSH text 삭제
+        if(document.querySelector("#temp")) document.querySelector("body").removeChild(document.querySelector("#temp"));
+
+        for(let i = 0; i < targetIndex - indexLen; i++) _index.appendChild(createNode("SPAN", _index.children.length-1));
+        note.innerHTML = "";
+      } else if(targetIndex < indexLen) {
+        for(let i = 0; i < indexLen - targetIndex; i++) {
+          const lastChildOfIndex = _index.children[_index.children.length-1];
+          _index.removeChild(lastChildOfIndex);
+        }
+
+        if(targetIndex < valueLen) {
+          for(let i = 0; i < valueLen - targetIndex; i++) {
+            const lastChildOfValue = _value.children[_value.children.length-1];
+            _value.removeChild(lastChildOfValue);
+          }
+        }
+
+        note.innerHTML = "";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="games/minesweeper/minesweeper.css">
+<div id="container">
+  <div id="controller">
+    <label for="len">크기</label>
+    <input type="text" value="9" id="len">
+    <label for="mines">지뢰갯수</label>
+    <input type="text" value="20" id="mines">
+  </div>
+  <div id="info">
+    <span id="remains"></span>
+    <span id="start">
+      <button id="startBtn">판생성</button>
+    </span>
+    <span id="time">0</span>
+  </div>
+  <table id="board">
+    <tbody></tbody>
+  </table>
+  <div id="result"></div>
+  <script src="games/minesweeper/minesweeper.js"></script>
+</div>
