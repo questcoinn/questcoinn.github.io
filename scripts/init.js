@@ -209,6 +209,14 @@ const setKind = (kind) => {
     kindElementsArray.filter((el) => el.innerText === kind)[0].id = "kind-active";
 }
 
+/** Reset markdown info to default */
+const resetMDInfo = () => {
+    document.getElementById("lines").innerText = '-';
+    document.getElementById("sloc").innerText = '-';
+    document.getElementById("bytes").innerText = 0;
+    document.getElementById("unit").innerText = 'Bytes';
+}
+
 /** Set nav with markdown file */
 const setNavWithMD = (nav, target) => {
     if(nav.dataset.currentLi) {
@@ -284,6 +292,7 @@ document.addEventListener("click", (e) => {
                 if(!result.success) {
                     document.getElementById("title-wrapper").firstElementChild.innerText = `Error: ${target.dataset.name}`;
                     setKind("Error");
+                    resetMDInfo();
                     document.getElementById("article-md").innerHTML = result.error;
 
                     if(nav.dataset.currentLi) {
@@ -320,6 +329,7 @@ fetchMD("README.md")
         if(!result.success) {
             document.getElementById("title-wrapper").firstElementChild.innerText = 'Error: Currently Not Available!';
             setKind("Error");
+            resetMDInfo();
             document.getElementById("article-md").innerHTML = result.error;
             return { success: false, error: result.error };
         }
