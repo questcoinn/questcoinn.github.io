@@ -343,7 +343,7 @@ fetchMD("README.md")
         return { success: true }
     });
 
-console.error(new HTTPError(404));
+// console.error(new HTTPError(404));
 
 /********
  * test *
