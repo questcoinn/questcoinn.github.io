@@ -5,26 +5,20 @@
       "text": "Database",
       "children": [
         {
-          "name": "concepts",
+          "name": "concepts.md",
           "text": "데이터베이스의 개념",
           "kind": "Docs",
           "children": []
         },
         {
-          "name": "modeling",
+          "name": "modeling.md",
           "text": "데이터 모델링 및 설계",
           "kind": "Docs",
           "children": []
         },
         {
-          "name": "rdb",
+          "name": "rdb.md",
           "text": "관계 데이터베이스 모델과 언어",
-          "kind": "Docs",
-          "children": []
-        },
-        {
-          "name": "concepts.md",
-          "text": "데이터베이스의 개념",
           "kind": "Docs",
           "children": []
         }
