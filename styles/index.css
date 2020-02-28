@@ -82,7 +82,7 @@ header img {
 }
 
 #tooltip-repo {
-    --repo-height: 4rem;
+    --repo-height: 2.5rem;
     padding: .5rem 1rem;
     position: absolute;
     top: calc(var(--header-padding) + var(--header-img-size) + 1.5rem);
@@ -247,6 +247,10 @@ aside {
     top: 4rem;
 }
 
+#aside-h3 {
+    cursor: pointer;
+}
+
 aside img {
     margin-right: .5rem;
 }
@@ -270,7 +274,7 @@ footer {
     font-size: .75rem;
 }
 
-footer span {
+footer > span {
     margin-right: 1rem;
 }
 

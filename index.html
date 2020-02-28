@@ -22,11 +22,11 @@
 </head>
 <body class="flex-center">
     <header class="flex-center">
-        <a href="https://www.github.com" target="_blank">
+        <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
             <img src="/components/svgs/gitmark-white.svg" alt="Github Homepage" class="transform-scale">
         </a>
         <a href="/" id="header-text"><h1>QuestCoin's Git Blog</h1></a>
-        <a href="https://www.github.com/questcoinn?tab=repositories" target="_blank" id="profile-link">
+        <a href="https://www.github.com/questcoinn?tab=repositories" target="_blank" rel="noopener noreferrer" id="profile-link">
             <img alt="@questcoinn" src="https://avatars0.githubusercontent.com/u/31612070?s=40&amp;v=4">
             <div id="tooltip-repo">To Repository</div>
         </a>
@@ -34,7 +34,7 @@
     <noscript>
         <strong>
             JavaScript is required for this page.<br>
-            See more info <a href="https://www.enable-javascript.com/" target="_blank">here</a>.
+            See more info <a href="https://www.enable-javascript.com/" target="_blank" rel="noopener noreferrer">here</a>.
         </strong>
     </noscript>
     <div id="middle-wrapper" class="flex-center">
@@ -69,7 +69,7 @@
                 </div>
             </main>
             <aside>
-                <h3>Index</h3>
+                <h3 id="aside-h3">Index</h3>
                 <div id="aside-scroll-element">
                     <!--
                         li-height -> dynamic
@@ -82,9 +82,9 @@
     </div>
     <footer class="flex-center">
         <span>
-            © 2019 GitHub, Inc.
+            © <span class="year"></span> GitHub, Inc.
         </span>
-        <a href="https://www.github.com" target="_blank">
+        <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">
             <img src="/components/svgs/gitmark-black.svg" alt="Github Homepage" class="transform-scale">
         </a>
     </footer>

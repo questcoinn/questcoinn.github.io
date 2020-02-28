@@ -259,6 +259,10 @@ const setAsideIndex = (aside) => {
 /********
  * MAIN *
  ********/
+[...document.getElementsByClassName("year")].forEach((el) => {
+    el.innerText = new Date().getFullYear();
+});
+
 fetch("/components/navlist.json", {
     Method: "GET",
     Accept: "application/json"
@@ -267,6 +271,10 @@ fetch("/components/navlist.json", {
     .then(jsonData => {
         document.getElementsByTagName("nav")[0].append(createNavList(jsonData.navList));
     });
+
+document.getElementById("aside-h3").addEventListener("click", (e) => {
+    scroll(0, 0);
+});
 
 document.addEventListener("click", (e) => {
     const target = e.target;
