@@ -9,6 +9,8 @@ article > div:last-of-type iframe,
 .ad,
 div[id^="google_ads_iframe_"] {
     display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 /* content-wrapper */
@@ -17,6 +19,7 @@ div[id^="google_ads_iframe_"] {
     max-width: none !important;
     width: 76% !important;
 }
+
 /* wiki-article */
 .senkawa-fixed-1300 > div:nth-child(2) > article {
     width: 100% !important;
@@ -33,10 +36,12 @@ div[id^="google_ads_iframe_"] {
     box-shadow: 0px 0px 3px !important;
     transition: .3s !important;
     z-index: 1 !important;
+    opacity: .6 !important;
 }
 
 .wiki-macro-footnote:hover {
-    max-height: 300px !important
+    max-height: 300px !important;
+    opacity: 1 !important;
 }
 
 /* side */
@@ -47,6 +52,7 @@ aside {
     display: flex !important;
     flex-direction: row !important;
     justify-content: flex-start !important;
+    flex-wrap: wrap;
     width: 22% !important;
     z-index: 1 !important;
     max-height: 80vh !important;
@@ -56,7 +62,7 @@ aside {
 }
 
 aside > div {
-    max-width: 50% !important;
+    width: 50% !important;
     height: 100% !important;
     margin-bottom: 0 !important;
     border: none !important;
@@ -64,10 +70,19 @@ aside > div {
 
 aside > div:nth-child(1) {
     border-right: .0625rem solid #ccc !important;
+    border-bottom: .0625rem solid #ccc !important;
 }
 
-aside > div:nth-child(2n) {
-    display: none !important;
+aside > div:nth-child(2) {
+    border-bottom: .0625rem solid #ccc !important;
+}
+
+aside > div:nth-child(3) {
+    border-right: .0625rem solid #ccc !important;
+}
+
+aside > div > div {
+    height: auto !important;
 }
 
 /* search box */
@@ -88,10 +103,12 @@ nav form > div > span:nth-child(1) {
 nav form > div > span:nth-child(1) a {
     width: 100% !important;
 }
+
 /* searchInput */
 nav form > div > div:nth-child(2) {
     width: 84% !important;
 }
+
 /* right-search-btns */
 nav form > div > span:nth-child(3) {
     float: right !important;
@@ -136,6 +153,11 @@ nav form > div > span:nth-child(3) button:nth-child(2) {
         top: 73px !important;
         width: 30.05% !important;
         background-color: white !important;
+        opacity: .8 !important;
+    }
+    
+    nav form > div:hover {
+        opacity: 1 !important;
     }
 
     nav form > div > div:nth-child(2) {
@@ -165,18 +187,21 @@ nav form > div > span:nth-child(3) button:nth-child(2) {
         background-color: white !important;
         transition: .3s !important;
         font-size: 0.8rem !important;
+        opacity: .8 !important;
     }
 
     aside:hover {
-        max-height: 200px !important
+        max-height: 200px !important;
+        opacity: 1 !important;
     }
 
     aside > div {
         margin-bottom: 0 !important;
+        width: 100% !important;
     }
-    
-    aside > div:nth-child(1) {
-        border-right: 0 !important;
+
+    aside > div:nth-child(3) {
+        border-bottom: .0625rem solid #ccc !important;
     }
 
     aside h5 {
