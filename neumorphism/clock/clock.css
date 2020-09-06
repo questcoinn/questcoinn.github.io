@@ -1,0 +1,122 @@
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    --clock-size: 800px;
+    --clock-font-size: 4rem;
+    --clock-border-width: 30px;
+    --clock-degree-base: 6deg;
+    --color-base: #34dab9;
+    --color-base-dark: #2fc4a7;
+    --color-base-light: #39f0cc;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-base);
+}
+
+.btn-sync {
+    margin-top: 3rem;
+    padding: .5rem 1rem;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    background-color: var(--color-base);
+    box-shadow: 6px 6px 12px var(--color-base-dark), 
+                -6px -6px 12px var(--color-base-light);
+    cursor: pointer;
+}
+
+.btn-sync:active {
+    box-shadow: inset 6px 6px 12px var(--color-base-dark), 
+                inset -6px -6px 12px var(--color-base-light);
+}
+
+.container-outer {
+    border-radius: 50%;
+    width: var(--clock-size);
+    height: var(--clock-size);
+    box-shadow: 11px 11px 20px var(--color-base-dark), 
+                -11px -11px 20px var(--color-base-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-inner {
+    border-radius: 50%;
+    width: calc(var(--clock-size) - var(--clock-border-width));
+    height: calc(var(--clock-size) - var(--clock-border-width));
+    box-shadow: inset 11px 11px 20px var(--color-base-dark), 
+                inset -11px -11px 20px var(--color-base-light);
+    position: relative;
+}
+
+.container-inner::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--color-base);
+    border-radius: 50%;
+    background-color: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.number {
+    font-size: var(--clock-font-size);
+    position: absolute;
+    left: 50%;
+    height: 100%;
+}
+
+.number:nth-of-type(1) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 1)); }
+.number:nth-of-type(2) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 2)); }
+.number:nth-of-type(3) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 3)); }
+.number:nth-of-type(4) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 4)); }
+.number:nth-of-type(5) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 5)); }
+.number:nth-of-type(6) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 6)); }
+.number:nth-of-type(7) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 7)); }
+.number:nth-of-type(8) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 8)); }
+.number:nth-of-type(9) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 9)); }
+.number:nth-of-type(10) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 10)); }
+.number:nth-of-type(11) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 11)); }
+.number:nth-of-type(12) { transform: translateX(-50%) rotate(calc(var(--clock-degree-base) * 5 * 12)); }
+
+.needle {
+    position: absolute;
+    left: 50%;
+}
+
+.hour {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 50%, #000 50%);
+    width: 30px;
+    height: 50%;
+    /* transform: translate(-50%, 50%) rotate(calc(var(--clock-degree-base) * 51)); */
+}
+
+.min {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 50%, #000 50%);
+    width: 20px;
+    height: calc(100% - 4 * var(--clock-font-size));
+    /* transform: translate(-50%, calc(2 * var(--clock-font-size))) rotate(calc(var(--clock-degree-base) * 11)); */
+}
+
+.sec {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0) 50%, #000 50%, #000 95%, rgb(185, 36, 36) 95%);
+    width: 10px;
+    height: calc(100% - 2 * var(--clock-font-size));
+    /* transform: translate(-50%, var(--clock-font-size)) rotate(calc(var(--clock-degree-base) * 34)); */
+}
