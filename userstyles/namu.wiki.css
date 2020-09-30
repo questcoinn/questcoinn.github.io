@@ -1,13 +1,14 @@
-.test-ad-card,
+/* .test-ad-card,
 .ad-card,
 .adsense,
-.wiki-inner-content + iframe,
 .ad-bottom,
 .kakao_ad_area,
 .adsbygoogle,
-article > div:last-of-type iframe,
-.ad,
-div[id^="google_ads_iframe_"] {
+.ad, */
+[id^="google_ads"],
+#search-ad,
+iframe[src^="//arca.live/static/ad"],
+[data-google-query-id] {
     display: none !important;
     width: 0 !important;
     height: 0 !important;
@@ -36,11 +37,11 @@ div[id^="google_ads_iframe_"] {
     box-shadow: 0px 0px 3px !important;
     transition: .3s !important;
     z-index: 1 !important;
-    opacity: .6 !important;
+    opacity: .85 !important;
 }
 
 .wiki-macro-footnote:hover {
-    max-height: 300px !important;
+    max-height: 500px !important;
     opacity: 1 !important;
 }
 
@@ -62,7 +63,7 @@ aside {
 }
 
 aside > div {
-    width: 50% !important;
+    max-width: 50% !important;
     height: 100% !important;
     margin-bottom: 0 !important;
     border: none !important;
@@ -140,12 +141,8 @@ nav form > div > span:nth-child(3) button:nth-child(2) {
     }
 
     .wiki-macro-footnote {
-        max-height: 10px !important;
+        max-height: 50px !important;
         width: 90% !important;
-    }
-
-    .wiki-macro-footnote:hover {
-        max-height: 150px !important
     }
 
     nav form > div {
@@ -153,9 +150,9 @@ nav form > div > span:nth-child(3) button:nth-child(2) {
         top: 73px !important;
         width: 30.05% !important;
         background-color: white !important;
-        opacity: .8 !important;
+        opacity: .85 !important;
     }
-    
+
     nav form > div:hover {
         opacity: 1 !important;
     }
@@ -187,7 +184,7 @@ nav form > div > span:nth-child(3) button:nth-child(2) {
         background-color: white !important;
         transition: .3s !important;
         font-size: 0.8rem !important;
-        opacity: .8 !important;
+        opacity: .85 !important;
     }
 
     aside:hover {
@@ -197,6 +194,7 @@ nav form > div > span:nth-child(3) button:nth-child(2) {
 
     aside > div {
         margin-bottom: 0 !important;
+        max-width: 100% !important;
         width: 100% !important;
     }
 
