@@ -1,0 +1,144 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --cell-size: 50px;
+    --color-light: #c6ced9;
+    --color-dark: #2f3945;
+    --color-closed: #c6ced9;
+    --color-opened: #c2c9d4;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-dark);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.head-text {
+    color: var(--color-dark);
+    font-size: 2.5rem;
+    letter-spacing: .5em;
+    background-color: var(--color-light);
+    padding: .4em .8em;
+    border-radius: .5em;
+}
+
+.app-minesweeper {
+    background-color: var(--color-light);
+    padding: 1em;
+    border-radius: 1rem;
+}
+
+.settings, .info {
+    background-color: var(--color-dark);
+    padding: .5em;
+    color: white;
+    border: 3px solid black;
+    border-radius: .5rem;
+}
+
+.settings > label {
+    margin-left: 1rem;
+}
+
+.game {
+    margin-top: 1rem;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+}
+
+#time, #mines-left {
+    background-color: white;
+    color: black;
+    width: 6em;
+    padding: .3rem .6rem;
+    text-align: end;
+}
+
+#time::after {
+    content: ' s';
+}
+
+#mines-left::after {
+    content: ' left';
+}
+
+#start-btn {
+    border: none;
+    font-weight: bold;
+    padding: .3rem .6rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+#board {
+    margin: auto;
+    margin-top: .5rem;
+    overflow: scroll;
+    border: 2px solid #94979c;
+    width: fit-content;
+}
+
+.row {
+    height: var(--cell-size);
+    width: max-content;
+}
+
+.cell {
+    display: inline-block;
+    border: 1px solid black;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    vertical-align: bottom;
+    text-align: center;
+    line-height: var(--cell-size);
+    font-weight: bold;
+}
+
+.cell.opened {
+    background-color: var(--color-opened);
+    border: 1px solid #b1b8c1;
+}
+
+.cell.closed {
+    background-color: var(--color-closed);
+    border: 1px solid #8a8d91;
+    cursor: pointer;
+}
+
+.cell.flagged {
+    background-color: var(--color-closed);
+    background-image: url('./images/flagged.png');
+    background-size: cover;
+    border: 1px solid #8a8d91;
+}
+
+.cell.mine {
+    background-image: url('./images/bomb.png');
+    background-size: calc(.8 * var(--cell-size));
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cell.error {
+    background-color: red;
+}
+
+.cell.num-1 { color: blue; }
+.cell.num-2 { color: green; }
+.cell.num-3 { color: red; }
+.cell.num-4 { color: purple; }
+.cell.num-5 { color: black; }
+.cell.num-6 { color: maroon; }
+.cell.num-7 { color: gray; }
+.cell.num-8 { color: turquoise; }

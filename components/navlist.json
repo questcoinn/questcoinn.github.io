@@ -29,14 +29,8 @@
       "text": "Project",
       "children": [
         {
-          "name": "minesweeper",
-          "text": "Mine Sweeper",
-          "kind": "App",
-          "children": []
-        },
-        {
-          "name": "randomwordgen",
-          "text": "Random Word Generator",
+          "name": "games",
+          "text": "Games",
           "kind": "App",
           "children": []
         }
