@@ -228,130 +228,108 @@ const setNavWithMD = (nav, target) => {
     document.querySelector(`[data-name=${CSS.escape(nav.dataset.currentLi)}]`).classList.add("nav-selected");
 }
 
-const setAsideIndex = (aside) => {
+const setAsideIndex = ($aside) => {
     const heads = document.getElementById("article-md").getElementsByTagName("h2");
     if(heads.length === 0) return;
 
-    if(aside.lastElementChild.tagName === "UL") {
-        aside.lastElementChild.remove();
+    if($aside.lastElementChild.tagName === "UL") {
+        $aside.lastElementChild.remove();
     }
-    aside.append(createIndexList(heads));
-
-    /**
-     * li-top-offset: ul-margin + ul-padding + li-margin
-     * li-top-margin: i * (li-height + li-margin)
-     */
-    const asideScroll = document.getElementById("aside-scroll-element");
-    const ul = asideScroll.nextElementSibling;
-    const li = ul.firstElementChild;
-
-    // const asideScrollStyle = getComputedStyle(asideScroll) || asideScroll.currentStyle;
-    const ulStyle = getComputedStyle(ul) || ul.currentStyle;
-    const liStyle = getComputedStyle(li) || li.currentStyle;
-
-    const liHeight = liStyle.height;
-
-    ul.style.transform = `translate(0, -${liHeight})`;
-    asideScroll.style.height = liHeight;
-    asideScroll.style.transform = `translate(0, calc(${ulStyle.marginTop} + ${ulStyle.paddingTop} + ${liStyle.marginTop}))`;
+    $aside.append(createIndexList(heads));
 }
 
 /********
  * MAIN *
  ********/
-[...document.getElementsByClassName("year")].forEach((el) => {
-    el.innerText = new Date().getFullYear();
-});
+(async () => {
+    const $titleWrapper = document.getElementById("title-wrapper");
+    const $nav = document.getElementsByTagName("nav")[0];
+    const $articleMD = document.getElementById("article-md");
+    const $aside = document.getElementsByTagName("aside")[0];
+    const $asideH3 = document.getElementById("aside-h3");
+    const $year = document.getElementsByClassName("year")[0];
 
-fetch("/components/navlist.json", {
-    Method: "GET",
-    Accept: "application/json"
-})
-    .then(res => res.json())
-    .then(jsonData => {
-        document.getElementsByTagName("nav")[0].append(createNavList(jsonData.navList));
-    });
-
-document.getElementById("aside-h3").addEventListener("click", (e) => {
-    scroll(0, 0);
-});
-
-document.addEventListener("click", (e) => {
-    const target = e.target;
-    const nav = document.getElementsByTagName("nav")[0];
-    const aside = document.getElementsByTagName("aside")[0];
+    let result;
     
-    if(target.classList.contains("trigger-open")) {
-        const parentClassList = target.parentNode.classList;
+    // footer year
+    $year.innerText = new Date().getFullYear();
 
-        if(parentClassList.contains("opened")) {
-            parentClassList.remove("opened");
-            parentClassList.add("closed");
-        } else if(parentClassList.contains("closed")) {
-            parentClassList.remove("closed");
-            parentClassList.add("opened");
+    // create nav
+    const res = await fetch("/components/navlist.json", {
+        Method: "GET",
+        Accept: "application/json"
+    });
+    const data = await res.json();
+    $nav.append(createNavList(data.navList));
+
+    // aside scroll
+    $asideH3.addEventListener("click", (e) => scroll(0, 0));
+
+    $nav.addEventListener("click", async (e) => {
+        const $target = e.target;
+
+        // fold nav
+        if($target.classList.contains("trigger-open")) {
+            const parentClassList = $target.parentNode.classList;
+            parentClassList.toggle('opened');
+            parentClassList.toggle('closed');
         }
 
-    } else if(target.classList.contains("nav-link")) {
-        fetchMD(target.dataset.src)
-            .then((result) => {
-                scroll(0, 0);
+        // get md file
+        if($target.classList.contains("nav-link")) {
+            result = await fetchMD($target.dataset.src);
+            scroll(0, 0);
 
-                if(!result.success) {
-                    document.getElementById("title-wrapper").firstElementChild.innerText = `Error: ${target.dataset.name}`;
-                    setKind("Error");
-                    resetMDInfo();
-                    document.getElementById("article-md").innerHTML = result.error;
+            if(!result.success) {
+                $titleWrapper.firstElementChild.innerText = `Error: ${$target.dataset.name}`;
+                setKind("Error");
+                resetMDInfo();
+                $articleMD.innerHTML = result.error;
 
-                    if(nav.dataset.currentLi) {
-                        document.querySelector(`[data-name=${CSS.escape(nav.dataset.currentLi)}]`).classList.remove("nav-selected");
-                    }
-                    nav.dataset.currentLi = "";
-                    
-                    if(aside.lastElementChild.tagName === "UL") {
-                        aside.lastElementChild.remove();
-                    }
-                    document.getElementById("aside-scroll-element").style.height = 0;
-
-                    return { success: false, error: result.error }
+                const { currentLi } = $nav.dataset;
+                if(currentLi) {
+                    document.querySelector(`[data-name=${CSS.escape(currentLi)}]`).classList.remove("nav-selected");
+                }
+                $nav.dataset.currentLi = "";
+                
+                if($aside.lastElementChild.tagName === "UL") {
+                    $aside.lastElementChild.remove();
                 }
 
-                // markdown
-                setName();
-                setTaskCheckbox();
+                return false;
+            }
 
-                setKind(target.dataset.kind);
-                setNavWithMD(nav, target);
-                setAsideIndex(aside);
+            // markdown
+            setName();
+            setTaskCheckbox();
 
-                return { success: true }
-            });
-    }
-});
-
-// SCROLL 넣자!!
-// http code embed하자!
-
-fetchMD("README.md")
-    .then((result) => {
-        if(!result.success) {
-            document.getElementById("title-wrapper").firstElementChild.innerText = 'Error: Currently Not Available!';
-            setKind("Error");
-            resetMDInfo();
-            document.getElementById("article-md").innerHTML = result.error;
-            return { success: false, error: result.error };
+            setKind($target.dataset.kind);
+            setNavWithMD($nav, $target);
+            setAsideIndex($aside);
         }
-
-        // markdown
-        setName();
-        setTaskCheckbox();
-
-        setAsideIndex(document.getElementsByTagName("aside")[0]);
-
-        return { success: true }
     });
 
-// console.error(new HTTPError(404));
+    // SCROLL 넣자!!
+    // http code embed하자!
+
+    result = await fetchMD("README.md");
+
+    if(!result.success) {
+        $titleWrapper.firstElementChild.innerText = 'Error: Currently Not Available!';
+        setKind("Error");
+        resetMDInfo();
+        $articleMD.innerHTML = result.error;
+        return;
+    }
+
+    // markdown
+    setName();
+    setTaskCheckbox();
+
+    setAsideIndex($aside);
+
+    // console.error(new HTTPError(404));
+})();
 
 /********
  * test *
