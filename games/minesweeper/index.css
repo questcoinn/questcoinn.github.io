@@ -12,9 +12,8 @@
 }
 
 body {
-    margin: 0;
+    margin: 2rem 0;
     background-color: var(--color-dark);
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
