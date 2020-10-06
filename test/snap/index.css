@@ -1,0 +1,39 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+#container {
+    overflow: scroll;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+}
+
+.con {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: start;
+}
+
+.con-inner {
+    background-color: white;
+    display: inline-block;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
