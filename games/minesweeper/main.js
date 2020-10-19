@@ -32,6 +32,7 @@ class Stopwatch extends AnimationFrame {
     const game = new Minesweeper();
     const stopwatch = new Stopwatch(game, $time);
 
+    // Load
     window.addEventListener('load', (e) => {
         stopwatch.stop();
         setBoard($width.value, $height.value, $board);
@@ -39,7 +40,8 @@ class Stopwatch extends AnimationFrame {
         $time.innerText = 0;
         $minesLeft.innerText = game.numOfMines;
     });
-    
+
+    // Init game
     $startBtn.addEventListener('click', (e) => {
         stopwatch.stop();
         setBoard($width.value, $height.value, $board);
@@ -48,6 +50,7 @@ class Stopwatch extends AnimationFrame {
         $minesLeft.innerText = game.numOfMines;
     });
 
+    // Click cell
     $board.addEventListener('click', (e) => {
         const $target = e.target;
         
@@ -86,6 +89,7 @@ class Stopwatch extends AnimationFrame {
         }
     });
 
+    // Right-click cell
     $board.addEventListener('contextmenu', (e) => {
         const $target = e.target;
         
@@ -172,7 +176,6 @@ function getCell($board, i, j) {
 }
 
 function end(game, prompt, cells) {
-    alert(prompt);
     for(let $cell of cells) {
         if($cell.classList.contains('opened') || $cell.classList.contains('error')) {
             continue;
@@ -188,4 +191,5 @@ function end(game, prompt, cells) {
         }
     }
     game.setStatus('ended');
+    setTimeout(() => alert(prompt), 80);
 }
