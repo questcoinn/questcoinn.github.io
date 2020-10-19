@@ -1,0 +1,26 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-size::before {
+    content: 'NOW: ';
+}
+
+.max-size::before {
+    content: 'MAX: ';
+}
+
+#canvas {
+    border: 1px solid black;
+}

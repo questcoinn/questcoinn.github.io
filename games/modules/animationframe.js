@@ -11,12 +11,15 @@ class AnimationFrame {
 
     callback(timestamp) {}
 
-    start() {
+    start(init) {
+        if(typeof init === 'function') {
+            init();
+        }
         this.id = window.requestAnimationFrame(this.callback);
     }
 
     step() {
-        this.start();
+        this.id = window.requestAnimationFrame(this.callback);
     }
 
     stop() {
